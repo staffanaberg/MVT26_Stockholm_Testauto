@@ -16,20 +16,23 @@ public class Exercise03 {
             try {
                 System.out.println("Skriv in fem heltal");
                 for (int i = 0; i < 5; i++) {
-                    int number = scan.nextInt();
+                    int number = Integer.parseInt(scan.nextLine());
                     numbers[i] = number;
                 }
                 System.out.println("Välj ett index 0-4");
-                int index = scan.nextInt();
+                int index = Integer.parseInt(scan.nextLine());
                 System.out.println("Index " + index + " har talet: " + numbers[index]);
 
             } catch (InputMismatchException e) {
                 System.out.println("Du skrev inte in ett heltal " + e);
             } catch (ArrayIndexOutOfBoundsException e) {
                 System.out.println("Du måste ange ett tal från 0-4");
+            } catch(Exception e) {
+                System.out.println("Nåt gick fel!?");
             }
         }
-
+        System.out.println("Du fick " +counterI +" InputMismatchException");
+        System.out.println("Du fick " +counterA +" ArrayIndexOutOfBoundsException");
         //10. Läs in fem heltal och lägg dem i en array.
         // Se till att inläsningen pågår tills det att användaren
         // har fyllt i fem heltal. Användaren ska få ett tydligt felmeddelande
