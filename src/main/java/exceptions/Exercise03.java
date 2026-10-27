@@ -1,4 +1,4 @@
-package excercises;
+package exceptions;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -12,27 +12,37 @@ public class Exercise03 {
 
         Scanner scan = new Scanner(System.in);
         int[] numbers = new int[5];
-        while(true) {
+        int counterI = 0;
+        int counterA = 0;
+        String text = "";
+        //om (counterI + counterA >= 3)
+        while(!(text.equals("stop") || (counterI + counterA >= 3))) {
             try {
                 System.out.println("Skriv in fem heltal");
                 for (int i = 0; i < 5; i++) {
-                    int number = Integer.parseInt(scan.nextLine());
+                    text = scan.nextLine();
+                    int number = Integer.parseInt(text);
                     numbers[i] = number;
                 }
                 System.out.println("Välj ett index 0-4");
-                int index = Integer.parseInt(scan.nextLine());
+                text = scan.nextLine();
+                int index = Integer.parseInt(text);
                 System.out.println("Index " + index + " har talet: " + numbers[index]);
 
             } catch (InputMismatchException e) {
                 System.out.println("Du skrev inte in ett heltal " + e);
+
             } catch (ArrayIndexOutOfBoundsException e) {
                 System.out.println("Du måste ange ett tal från 0-4");
+                counterA++;
             } catch(Exception e) {
-                System.out.println("Nåt gick fel!?");
+                System.out.println("Nåt gick fel!?" +e);
+                counterI++;
             }
         }
-        System.out.println("Du fick " +counterI +" InputMismatchException");
+        System.out.println("Du fick " +counterI +" NumberFormatException");
         System.out.println("Du fick " +counterA +" ArrayIndexOutOfBoundsException");
+
         //10. Läs in fem heltal och lägg dem i en array.
         // Se till att inläsningen pågår tills det att användaren
         // har fyllt i fem heltal. Användaren ska få ett tydligt felmeddelande
