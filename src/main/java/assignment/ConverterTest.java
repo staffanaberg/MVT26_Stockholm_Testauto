@@ -77,6 +77,39 @@ public class ConverterTest {
         assertEquals(expected, actual);
     }
 
+    @Test
+    public void testConvertSymbolToMorse() {
+        Converter converter = new Converter();
+        String text = "E!";
+
+        String actual = converter.convert(text);
+        String expected = "Invalid input";
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testNoInput() {
+        Converter converter = new Converter();
+        String text = "";
+
+        String actual = converter.convert(text);
+        String expected = "No input";
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testMultipleSpaces() {
+        Converter converter = new Converter();
+        String text = "       ";
+
+        String actual = converter.convert(text);
+        String expected = "No input";
+
+        assertEquals(expected, actual);
+    }
+
     //Ogiltliga tecken
 
     //Gemener istället för versaler
